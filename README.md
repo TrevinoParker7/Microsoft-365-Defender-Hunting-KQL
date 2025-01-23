@@ -1,6 +1,6 @@
 
 ### 🎯 **Tracking the Adversary with MTP Advanced Hunting**  
-**Series:** `MTP Advanced Hunting`  
+**Series:** `Advanced Hunting`  
 **Topic:** `Let’s Hunt! Applying KQL to Incident Tracking`  
 ---
 
