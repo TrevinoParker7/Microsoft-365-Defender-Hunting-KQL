@@ -154,6 +154,26 @@ AppFileEvents
 | project-reorder Timestamp, ActionType, Application, FolderPath, IPAddress, Location, ISP
 | order by Timestamp asc
 ```
+### 🚨 **Investigating Suspicious IPs** 🔍
+
+```kql
+// Looks like we have a couple strange IPs interacting with the file: 
+// 178.32.124.142 and 51.83.139.56. 
+// It was uploaded using **Barbara's account** – that's the **Authentication** 
+// The "backdoor" is just a publicly available service (**SharePoint**) 
+// The **Communication** channel involves those IPs. Let's see what else was involved with them... 🌐
+
+search Timestamp > ago(19d) and ('178.32.124.142' or '51.83.139.56')
+| project-reorder $table, Timestamp, AccountName, AccountDomain, ActionType, FileName, FolderPath 
+```
+
+### 🧐 **Key Observations:**
+- **IP Investigation** 🌍: We're focusing on the two IPs, `178.32.124.142` and `51.83.139.56`.
+- **Authentication** 🔐: Barbara's account was used in this interaction.
+- **Backdoor** 🔑: The malicious "backdoor" was just a publicly accessible service (**SharePoint**).
+- **Communication** 📡: Both suspicious IPs were communicating with the environment.
+
+---
 
 🚨 Strange IPs detected: **178.32.124.142**, **51.83.139.56**  
 🛠️ Investigate additional documents uploaded from the same user.
